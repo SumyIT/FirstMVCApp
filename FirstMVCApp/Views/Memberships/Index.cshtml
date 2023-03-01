@@ -1,0 +1,66 @@
+﻿@model IEnumerable<FirstMVCApp.Models.MembershipModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdMembership)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdMember)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdMembershipType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Level)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMembership)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMember)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMembershipType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Level)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.IdMembership }) |
+                @Html.ActionLink("Details", "Details", new { id=item.IdMembership }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.IdMembership })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
