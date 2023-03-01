@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FirstMVCApp.Controllers
 {
-    public class AnnouncementsController : Controller
+    public class AnnouncementsController : Controller 
     {
         private readonly AnnouncementsRepository _repository;
         public AnnouncementsController(AnnouncementsRepository repository)
