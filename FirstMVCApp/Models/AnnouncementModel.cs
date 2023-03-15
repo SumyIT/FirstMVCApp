@@ -5,7 +5,7 @@ namespace FirstMVCApp.Models
     public class AnnouncementModel
     {
         [Key]
-        public Guid? IdAnnouncement { get; set; }
+        public Guid IdAnnouncement { get; set; }
 
         [Required(ErrorMessage ="Acest camp este obligatoriu!!!")]
         public DateTime ValidFrom { get; set; }

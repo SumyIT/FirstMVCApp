@@ -7,9 +7,12 @@ namespace FirstMVCApp.Controllers
     public class CodeSnippetsController : Controller
     {
         private readonly CodeSnippetsRepository _repository;
-        public CodeSnippetsController(CodeSnippetsRepository repository)
+
+        private readonly MembersRepository _membersRepository;
+        public CodeSnippetsController(CodeSnippetsRepository repository, MembersRepository membersRepository)
         {
             _repository = repository;
+            _membersRepository = membersRepository;
         }
 
         public IActionResult Index()
@@ -20,6 +23,8 @@ namespace FirstMVCApp.Controllers
 
         public IActionResult Create()
         {
+            var members = _membersRepository.GetMembers();
+            ViewBag.data = members;
             return View("Create");
         }
 

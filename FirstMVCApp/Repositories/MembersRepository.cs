@@ -1,5 +1,6 @@
 ﻿using FirstMVCApp.DataContext;
 using FirstMVCApp.Models;
+using FirstMVCApp.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace FirstMVCApp.Repositories
@@ -42,6 +43,27 @@ namespace FirstMVCApp.Repositories
             MemberModel member = GetMemberById(id);
             _context.Members.Remove(member);
             _context.SaveChanges();
+        }
+
+        public MemberCodeSnippetViewModel GetMemberCodeSnippets(Guid id)
+        {
+            MemberCodeSnippetViewModel memberCodeSnippetsViewModel = new MemberCodeSnippetViewModel();
+
+            MemberModel member = _context.Members.FirstOrDefault(x => x.IdMember == id);
+            if (member != null)
+            {
+                memberCodeSnippetsViewModel.Name = member.Name;
+                memberCodeSnippetsViewModel.Position = member.Position;
+                memberCodeSnippetsViewModel.Title = member.Title;
+
+                IQueryable<CodeSnippetModel> memberCodeSnippets = _context.CodeSnippets.Where(x => x.IdMember == id);
+
+                foreach (CodeSnippetModel dbCodeSnippet in memberCodeSnippets)
+                {
+                    memberCodeSnippetsViewModel.CodeSnippets.Add(dbCodeSnippet);
+                }
+            }
+            return memberCodeSnippetsViewModel;
         }
     }
 }

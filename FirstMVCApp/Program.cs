@@ -1,3 +1,4 @@
+using Auth0.AspNetCore.Authentication;
 using FirstMVCApp.DataContext;
 using FirstMVCApp.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +24,15 @@ namespace FirstMVCApp
             builder.Services.AddTransient<MembershipTypesRepository, MembershipTypesRepository>();
             builder.Services.AddTransient<CodeSnippetsRepository, CodeSnippetsRepository>();
 
+            builder.Services
+                .AddAuth0WebAppAuthentication(options => {
+                    options.Domain = builder.Configuration["Auth0:Domain"];
+                    options.ClientId = builder.Configuration["Auth0:ClientId"];
+                });
+
             var app = builder.Build();
+
+            app.UseAuthentication();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

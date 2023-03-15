@@ -1,5 +1,6 @@
 ﻿using FirstMVCApp.Models;
 using FirstMVCApp.Repositories;
+using FirstMVCApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FirstMVCApp.Controllers
@@ -68,6 +69,12 @@ namespace FirstMVCApp.Controllers
         {
             MemberModel member = _repository.GetMemberById(id);
             return View("Details", member);
+        }
+
+        public IActionResult DetailsWithCodeSnippets(Guid id)
+        {
+            MemberCodeSnippetViewModel viewModel = _repository.GetMemberCodeSnippets(id);
+            return View("DetailsWithCodeSnippets", viewModel);
         }
     }
 }
