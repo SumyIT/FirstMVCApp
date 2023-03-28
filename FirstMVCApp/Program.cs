@@ -15,7 +15,7 @@ namespace FirstMVCApp
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<ProgrammingClubDataContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
             builder.Services.AddTransient<ProgrammingClubDataContext, ProgrammingClubDataContext>();
             builder.Services.AddTransient<AnnouncementsRepository, AnnouncementsRepository>();
