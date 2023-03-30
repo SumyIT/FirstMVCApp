@@ -13,7 +13,7 @@ namespace FirstMVCApp.Repositories
             _context = context;
         }
 
-        public DbSet<AnnouncementModel> GetAnnouncements()  //get all drom table
+        public DbSet<AnnouncementModel> GetAnnouncements()  //get all from table
         {
             return _context.Announcements;
         }
