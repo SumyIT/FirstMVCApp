@@ -7,7 +7,6 @@ namespace FirstMVCApp.Controllers
     public class CodeSnippetsController : Controller
     {
         private readonly CodeSnippetsRepository _repository;
-
         private readonly MembersRepository _membersRepository;
         public CodeSnippetsController(CodeSnippetsRepository repository, MembersRepository membersRepository)
         {
